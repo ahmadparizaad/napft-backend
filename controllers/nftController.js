@@ -540,19 +540,21 @@ exports.getTrendingNFTs = async (req, res) => {
         .filter(id => id) // Filter out nulls
     )];
     
-    // Get those NFTs
+    // Get those NFTs but only include ones that are listed
     let trendingNFTs = [];
     
     if (nftIdsFromTransactions.length > 0) {
       trendingNFTs = await NFT.find({
-        _id: { $in: nftIdsFromTransactions }
+        _id: { $in: nftIdsFromTransactions },
+        isListed: true // Only get listed NFTs
       }).limit(limit);
     }
     
-    // If we don't have enough trending NFTs from transactions, get the most recently created ones
+    // If we don't have enough trending NFTs from transactions, get the most recently created ones that are listed
     if (trendingNFTs.length < limit) {
       const additionalNFTs = await NFT.find({
-        _id: { $nin: trendingNFTs.map(nft => nft._id) } // Exclude NFTs we already have
+        _id: { $nin: trendingNFTs.map(nft => nft._id) }, // Exclude NFTs we already have
+        isListed: true // Only get listed NFTs
       })
       .sort({ createdAt: -1 })
       .limit(limit - trendingNFTs.length);
@@ -560,7 +562,7 @@ exports.getTrendingNFTs = async (req, res) => {
       trendingNFTs = [...trendingNFTs, ...additionalNFTs];
     }
     
-    console.log(`Found ${trendingNFTs.length} trending NFTs`);
+    console.log(`Found ${trendingNFTs.length} trending listed NFTs`);
     
     res.status(200).json({
       success: true,
