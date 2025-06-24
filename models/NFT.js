@@ -34,11 +34,12 @@ const nftSchema = new mongoose.Schema(
     },
     price: {
       type: Number,
-      default: 0
+      default: 0,
     },
     currency: {
       type: String,
-      default: 'USDC'
+      enum: ['ETH', 'USDC', 'SKALE'],
+      default: 'ETH'
     },
     owner: {
       type: String,
@@ -77,9 +78,14 @@ const nftSchema = new mongoose.Schema(
       ref: 'Collection',
       default: null
     },
+    // Changed from utilityPercent to both utilityPercent and utilityAmount
     utilityPercent: {
       type: Number,
       default: 0
+    },
+    utilityAmount: {
+      type: Number,
+      default: 0,
     },
     transactionHistory: [
       {
@@ -92,7 +98,11 @@ const nftSchema = new mongoose.Schema(
       default: Date.now
     }
   },
-  { timestamps: true }
+  { 
+    timestamps: true,
+    toJSON: { getters: true, virtuals: true },
+    toObject: { getters: true, virtuals: true }
+  }
 );
 
 // Create a compound index for tokenId to ensure uniqueness
