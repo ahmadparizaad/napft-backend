@@ -38,7 +38,7 @@ const nftSchema = new mongoose.Schema(
     },
     currency: {
       type: String,
-      enum: ['ETH', 'USDC', 'SKALE'],
+      enum: ['ETH', 'USDC', 'SKALE', 'SKL', 'POL', 'MATIC'],
       default: 'ETH'
     },
     owner: {

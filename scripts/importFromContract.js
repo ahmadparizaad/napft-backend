@@ -137,7 +137,7 @@ async function processNFTMetadata(tokenId, metadataURI, creator, owner, price, r
           from: existingNFT.owner,
           to: owner,
           price: 0, // Transfers don't involve a price
-          currency: 'USDC',
+          currency: 'ETH', // Use ETH as default currency
           txHash: `0x${Math.random().toString(16).slice(2, 66)}`, // Mock tx hash
           timestamp: new Date()
         });
@@ -211,7 +211,7 @@ async function processNFTMetadata(tokenId, metadataURI, creator, owner, price, r
       description: metadata.description || "",
       image: imageUrl,
       price: formattedPrice || 100, // Use provided price or default
-      currency: "USDC",
+      currency: "ETH", // Default to ETH for newly imported NFTs
       creator: creator,
       owner: owner,
       royaltyFee: royaltyFee || metadata.royaltyFee || 0.05, // Use provided royalty or default
@@ -237,7 +237,7 @@ async function processNFTMetadata(tokenId, metadataURI, creator, owner, price, r
       from: '0x0000000000000000000000000000000000000000', // Zero address
       to: nft.creator,
       price: 0,
-      currency: 'USDC',
+      currency: 'ETH', // Use ETH as default currency
       txHash: `0x${Math.random().toString(16).slice(2, 66)}`, // Mock tx hash
       timestamp: nft.createdAt
     });

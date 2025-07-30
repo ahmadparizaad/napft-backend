@@ -162,6 +162,7 @@ exports.createNFT = async (req, res) => {
       title,
       description,
       price,
+      currency,
       owner,
       creator,
       royaltyFee,
@@ -190,7 +191,7 @@ exports.createNFT = async (req, res) => {
       title,
       description,
       price,
-      currency: 'USDC',
+      currency: currency || 'ETH', // Default to ETH if not provided
       owner,
       creator,
       royaltyFee,
@@ -213,7 +214,7 @@ exports.createNFT = async (req, res) => {
       from: '0xC202B26262b4a3110d3Df2617325c41DfB62933e', // Mint address
       to: creator,
       price: 0,
-      currency: 'USDC',
+      currency: nft.currency, // Use the NFT's currency
       txHash: req.body.txHash || `0x${Math.random().toString(16).slice(2, 66)}`,
       timestamp: new Date()
     });
@@ -301,7 +302,7 @@ exports.updateNFT = async (req, res) => {
         from: nft.owner,
         to: nft.owner,
         price: req.body.price || nft.price,
-        currency: 'USDC',
+        currency: nft.currency, // Use the NFT's currency
         txHash: req.body.txHash || `0x${Math.random().toString(16).slice(2, 66)}`,
         timestamp: new Date()
       });
@@ -373,7 +374,7 @@ exports.buyNFT = async (req, res) => {
       from: oldOwner,
       to: buyer,
       price: nft.price,
-      currency: 'USDC',
+      currency: nft.currency, // Use the NFT's currency
       txHash: txHash || `0x${Math.random().toString(16).slice(2, 66)}`,
       timestamp: new Date()
     }], { session });

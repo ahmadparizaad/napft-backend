@@ -31,7 +31,8 @@ const transactionSchema = new mongoose.Schema(
     },
     currency: {
       type: String,
-      default: 'USDC'
+      enum: ['ETH', 'USDC', 'SKALE', 'SKL', 'POL', 'MATIC'],
+      default: 'ETH'
     },
     txHash: {
       type: String
