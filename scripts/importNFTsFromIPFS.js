@@ -338,7 +338,7 @@ async function fetchNFTsFromBlockchain() {
     console.log("=== Starting to fetch NFT data from blockchain and IPFS ===");
     
     // Connect to SKALE Network
-    const SKALE_RPC_URL = process.env.SKALE_RPC_URL || "https://testnet.skalenodes.com/v1/giant-half-dual-testnet";
+    const SKALE_RPC_URL = process.env.SKALE_RPC_URL || "https://mainnet.skalenodes.com/v1/green-giddy-denebola";
     const provider = new ethers.providers.JsonRpcProvider(SKALE_RPC_URL);
     console.log(`Connected to blockchain at: ${SKALE_RPC_URL}`);
     

@@ -2,7 +2,7 @@
 // This file centralizes contract information for importing across scripts
 
 // Contract address (should be overridden by environment variable)
-const contractAddress = "0xYourContractAddressHere"; // Replace with actual contract address
+const contractAddress = "0x0C0c927878691Aa20B5F50Ce33CE61D5B8aC027E"; // Mainnet deployed contract address
 
 // Full ABI with all functions used in our scripts
 const abi = [

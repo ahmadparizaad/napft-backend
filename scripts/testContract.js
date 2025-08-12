@@ -8,7 +8,7 @@ async function testContract() {
     console.log("Contract address:", process.env.CONTRACT_ADDRESS || contractAddress);
     
     // Connect to SKALE Network
-    const SKALE_RPC_URL = process.env.SKALE_RPC_URL || "https://testnet.skalenodes.com/v1/giant-half-dual-testnet";
+    const SKALE_RPC_URL = process.env.SKALE_RPC_URL || "https://mainnet.skalenodes.com/v1/green-giddy-denebola";
     console.log("RPC URL:", SKALE_RPC_URL);
     
     // Create provider

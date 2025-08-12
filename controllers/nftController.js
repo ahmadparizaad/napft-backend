@@ -173,7 +173,8 @@ exports.createNFT = async (req, res) => {
       attributes,
       ipfsHash,
       collectionId,
-      utilityPercent
+      utilityPercent,
+      utilityAmount
     } = req.body;
     
     // Check if NFT with this tokenId already exists
@@ -203,6 +204,7 @@ exports.createNFT = async (req, res) => {
       ipfsHash,
       collectionId,
       utilityPercent,
+      utilityAmount,
       createdAt: new Date()
     });
     

@@ -84,8 +84,9 @@ const nftSchema = new mongoose.Schema(
       default: 0
     },
     utilityAmount: {
-      type: Number,
+      type: mongoose.Schema.Types.Decimal128,
       default: 0,
+      get: v => v ? parseFloat(v.toString()) : 0
     },
     transactionHistory: [
       {
