@@ -17,6 +17,7 @@ const nftRoutes = require('./routes/nftRoutes');
 const collectionRoutes = require('./routes/collectionRoutes');
 const transactionRoutes = require('./routes/transactionRoutes');
 const contactUsRoutes = require('./routes/contactUsRoutes');
+const sfuelRoutes = require('./routes/sfuelRoutes');
 
 // Create Express app
 const app = express();
@@ -42,6 +43,7 @@ app.use('/api/collections', collectionRoutes);
 
 app.use('/api/transactions', transactionRoutes);
 app.use('/api', contactUsRoutes);
+app.use('/api', sfuelRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
